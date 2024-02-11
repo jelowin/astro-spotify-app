@@ -1,0 +1,44 @@
+---
+import PlaylistCard from "./PlaylistCard.astro";
+import fetcher from "../utils/fetcher";
+
+const response = fetcher({url: '/playlists/6X9EhIIWmyz0M9YOnAW1WL'})
+const data = await response
+
+---
+<div>{console.log(data)}</div>
+<section>
+  <article>
+    <a href=`/playlists/${data.id}`>
+      <PlaylistCard
+        height={150}
+        name={data.name}
+        url={data.images[0].url}
+        width={150}
+      />
+    </a>
+  </article>
+  <!-- {artists.map(artist =>
+    <PlaylistCard
+      height={200}
+      name={artist.name}
+      url={artist.images[0].url}
+      width={200}
+    />
+  )} -->
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  article {
+    max-width: 200px;
+    padding: 24px;
+    border: 1px solid;
+    border-radius: 16px;
+  }
+</style>

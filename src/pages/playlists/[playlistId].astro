@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import fetcher from '../../utils/fetcher.js';
+const { artist } = Astro.params;
+
+const response = fetcher({url: `/playlists/${artist}/tracks`})
+const data = await response
+---
+
+<Layout title="Spotify">
+	<main>
+		<h1>Artist detail</h1>
+	</main>
+</Layout>
+
+<style>
+</style>
